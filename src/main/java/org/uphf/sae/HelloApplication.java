@@ -12,8 +12,8 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        BorderPane root = new BorderPane();
-        primaryStage.setScene(new Scene(root, 140, 85));
+        %%BorderPane root = new BorderPane();
+        %primaryStage.setScene(new Scene(root, 140, 85));
         primaryStage.show();
     }
 
