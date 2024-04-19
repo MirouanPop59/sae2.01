@@ -14,15 +14,10 @@ public class Entrepot extends Secteur {
     }
 
     public int addNbMinerais() {
-        // TODO implement here
         return 0;
     }
 
-    /**
-     * @return
-     */
     public String TypeMineraiE() {
-        // TODO implement here
         return "";
     }
 

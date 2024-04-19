@@ -19,7 +19,6 @@ public class Mine extends Secteur {
 
 
     public void BaisserNbMinerais() {
-        // TODO implement here
     }
 
     /**

@@ -15,7 +15,6 @@ public class Secteur {
         // TODO implement here
     }
     public void CreeEntrepot() {
-        // TODO implement here
     }
 
     /**
