@@ -1,14 +1,13 @@
+package org.uphf.sae;
 
-import java.util.*;
 
-/**
- * 
- */
 public class Secteur {
 
-    private boolean terrain;
-    private boolean occuper;
-    private String typeSetceur;
+    private int sect[][];
+
+    public Secteur(){
+        int[][] sect = {{0,0},{0,0}};
+    }
 
 
     public void CreePtEau() {
@@ -18,17 +17,20 @@ public class Secteur {
     }
 
     /**
-     * 
+     *
      */
     public void CreeMine() {
         // TODO implement here
     }
 
     /**
-     * 
+     *
      */
     public void CreerVierge() {
         // TODO implement here
     }
 
+    public int[][] getSect() {
+        return sect;
+    }
 }
