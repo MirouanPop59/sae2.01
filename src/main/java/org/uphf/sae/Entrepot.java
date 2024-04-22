@@ -13,7 +13,7 @@ public class Entrepot extends Secteur {
         this.ligne=ligne;
         this.colonne = colonne;
         this.typeM=typeM;
-        this.nbM=0;
+        this.nbM=0 ;
 
     }
 

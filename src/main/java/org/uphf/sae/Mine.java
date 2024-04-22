@@ -15,7 +15,7 @@ public class Mine extends Secteur {
         this.colonne = colonne;
         this.typeM = typeM;
         this.CapaInitial = genererInt(50,100);
-        this.nbMinerai = this.CapaInitial;
+        this.nbMinerai = this.CapaInitial ;
 
     }
 
