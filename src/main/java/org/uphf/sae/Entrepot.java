@@ -17,6 +17,10 @@ public class Entrepot extends Secteur {
 
     }
 
+    public int addMinerai(int i){
+        nbM += i;
+        return nbM;
+    }
 
 
     public String TypeMineraiE() {
