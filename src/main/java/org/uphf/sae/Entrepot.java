@@ -8,20 +8,23 @@ public class Entrepot extends Secteur {
     private String typeM;
     protected int nbM;
 
+    /* constructeur entrepot par defauts */
     public Entrepot(int idEntrepot,int ligne, int colonne,String typeM) {
         this.idEntrepot = idEntrepot;
         this.ligne=ligne;
         this.colonne = colonne;
         this.typeM=typeM;
-        this.nbM=0 ;
+        this.nbM=0 ; /* on initialise le nombre de minerai du robot puisqu'au début de la partie il possède 0 minerai */
 
     }
 
+    /* permet d'ajouter les minerais du robot dans l'entreport concerné */
     public int addMinerai(int i){
         nbM += i;
         return nbM;
     }
 
+    /* création des getter */
 
     public String TypeMineraiE() {
         return typeM;

@@ -9,12 +9,14 @@ public class Mine extends Secteur {
     protected int nbMinerai;
     private int CapaInitial;
 
+    /* constructeur par defaut pour la mine */
+
     public Mine(int idMine, int ligne, int colonne, String typeM) {
         this.idMine = idMine;
         this.ligne = ligne;
         this.colonne = colonne;
         this.typeM = typeM;
-        this.CapaInitial = genererInt(50,100);
+        this.CapaInitial = genererInt(50,100);   /* la capacité de la mine est calculé avec un random entre 50 et 100 pour sa capacité */
         this.nbMinerai = this.CapaInitial ;
 
     }
@@ -26,8 +28,7 @@ public class Mine extends Secteur {
         return nb;
     }
 
-    public void BaisserNbMinerais() {
-    }
+    /* creation de getter de chaque attributs */
 
     public String TypeMineraiM() {
         return typeM;
