@@ -53,3 +53,4 @@ public class Mine extends Secteur {
         return this.nbMinerai;
     }
 }
+
