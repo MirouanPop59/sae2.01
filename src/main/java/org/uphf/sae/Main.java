@@ -36,8 +36,6 @@ public class Main {
 
     public static void main(String[] args) {
         Monde m= new Monde();
-        ArrayList<Mine> mines = m.getLstMine();
-        ArrayList<Robot> robots = m.getLstRobot();
         Robot rEnJeux;
         int cptTour = 0;
 
@@ -46,11 +44,11 @@ public class Main {
         m.affichage();
         while (!allMinevide) {
             allMinevide = true;
-            for (Mine mine : mines) {
+            for (Mine mine : m.getLstMine()) {
                 if (mine.getNbMinerai() != 0) {
                     allMinevide = false;
                     // Simuler l'extraction de minerai (jouer au jeux)
-                    rEnJeux = choixrobot( robots);
+                    rEnJeux = choixrobot( m.getLstRobot());
                     // Déplacer le robot
                     boolean exit = false;Scanner sc = new Scanner(System.in);
                     while (!exit) {
@@ -64,7 +62,7 @@ public class Main {
                                     System.out.println(mine.getIdMine());
                                     rEnJeux.recolter(mineRbt);
                                     System.out.println("Entrez l'ID du robot que vous souhaitez sélectionner. Liste des robots disponibles :");
-                                    for (Robot robot : robots) {
+                                    for (Robot robot : m.getLstRobot()) {
                                         System.out.println(robot);}
                                     cptTour+=1;
                                 }
