@@ -59,7 +59,7 @@ public class Main {
                         // Déplacer le robot
                     while (!sortie) {
                         Scanner sc = new Scanner(System.in);
-                        System.out.print("Entrez une commande de déplacement (N, O, E, S), pour recolter des minerais ou en deposer taper 'recolter' ou 'deposer' et 'exit' pour quitter : ");
+                        System.out.print("Entrez une commande de déplacement (N, O, E, S), pour recolter des minerais ou en deposer taper 'recolter' ou 'deposer' et 'exit' pour passer le tour : ");
                         String command = sc.next();
                         rlstTampon.remove(rEnJeux);
                         if (command.equals("exit")){
