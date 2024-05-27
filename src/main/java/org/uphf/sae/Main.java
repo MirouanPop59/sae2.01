@@ -22,6 +22,7 @@ public class Main {
             System.out.println("Robot non trouvé. Veuillez réessayer.");
             System.out.print("Entrez l'ID du robot que vous souhaitez sélectionner : ");
             robotId = sc.nextInt();
+
             for (Robot r : robots) {
                 if (r.getIdRobot() == robotId) {
                     selectRobot = r;
@@ -35,58 +36,72 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        int cpt=0;
+        boolean sortie;
         Monde m= new Monde();
+        ArrayList<Robot> rlstTampon = new ArrayList<>();
         Robot rEnJeux;
-        int cptTour = 0;
-
         boolean allMinevide =false;
         /*boolean quitter = false;*/
         m.affichage();
         while (!allMinevide) {
-            allMinevide = true;
-            for (Mine mine : m.getLstMine()) {
-                if (mine.getNbMinerai() != 0) {
-                    allMinevide = false;
-                    // Simuler l'extraction de minerai (jouer au jeux)
-                    rEnJeux = choixrobot( m.getLstRobot());
-                    // Déplacer le robot
-                    boolean exit = false;Scanner sc = new Scanner(System.in);
-                    while (!exit) {
+            rlstTampon.addAll(m.getLstRobot());
+            while (!rlstTampon.isEmpty()){
+                cpt+=1;
+                System.out.println("Tour numéro : " + cpt);
+                for (Mine mine : m.getLstMine()) {
+                    if (mine.getNbMinerai() != 0) {
+                        allMinevide = false;}
+                    else allMinevide = true;
+                        // Simuler l'extraction de minerai (jouer au jeux)
+                    rEnJeux = choixrobot(rlstTampon);
+                    sortie=false;
+                        // Déplacer le robot
+                    while (!sortie) {
+                        Scanner sc = new Scanner(System.in);
                         System.out.print("Entrez une commande de déplacement (N, O, E, S), pour recolter des minerais ou en deposer taper 'recolter' ou 'deposer' et 'exit' pour quitter : ");
                         String command = sc.next();
-                        if (command.equalsIgnoreCase("exit")) {
-                            exit = true;}
+                        rlstTampon.remove(rEnJeux);
+                        if (command.equals("exit")){
+                            sortie = true;
+                        }
                         else if (command.equalsIgnoreCase("recolter")) {
-                            for(Mine mineRbt: m.getLstMine())
-                                if (mineRbt.getColonne() == rEnJeux.getColonne() && mineRbt.getLigne()==rEnJeux.getLigne() ){
-                                    System.out.println(mine.getIdMine());
-                                    rEnJeux.recolter(mineRbt);
-                                    m.affichage();
-                                    System.out.println("Entrez l'ID du robot que vous souhaitez sélectionner. Liste des robots disponibles :");
-                                    for (Robot robot : m.getLstRobot()) {
-                                        System.out.println(robot);}
-                                    cptTour+=1;
+                                for(Mine mineRbt: m.getLstMine()) {
+                                    if (mineRbt.getColonne() == rEnJeux.getColonne() && mineRbt.getLigne()==rEnJeux.getLigne() ){
+                                        System.out.println(mine.getIdMine());
+                                        rEnJeux.recolter(mineRbt);
+                                        m.affichage();
+                                        System.out.println("Liste des robots disponibles :");
+                                        for (Robot robot : m.getLstRobot()) {
+                                            System.out.println(robot);
+                                        }
+                                        System.out.println();
+                                    }
                                 }
-                        }else if (command.equalsIgnoreCase("deposer")) {
-                            for(Entrepot entrepotRbt: m.getLstEntrepot())
-                                if (entrepotRbt.getColonne() == rEnJeux.getColonne() && entrepotRbt.getLigne()==rEnJeux.getLigne()){
-                                    rEnJeux.deposer(entrepotRbt);
-                                    m.affichage();
-                                    cptTour+=1;
-                                }
-
+                                sortie = true;
+                        }
+                        else if (command.equalsIgnoreCase("deposer")) {
+                                for(Entrepot entrepotRbt: m.getLstEntrepot())
+                                    if (entrepotRbt.getColonne() == rEnJeux.getColonne() && entrepotRbt.getLigne()==rEnJeux.getLigne()){
+                                        rEnJeux.deposer(entrepotRbt);
+                                        m.affichage();
+                                    }
+                                sortie = true;
                         }
                         else if ((command.equalsIgnoreCase("N")) || (command.equalsIgnoreCase("S")) || (command.equalsIgnoreCase("O")) || (command.equalsIgnoreCase("E"))){
-                            m = rEnJeux.avancer(m,command);
-                            cptTour+=1;
-                            m.affichage();}
-                            // break;
+                                m = rEnJeux.avancer(m,command);
+                                m.affichage();
+                                sortie = true;
+                        }
+                        else sortie=false;
                     }
                 }
+            }
+
             if (!allMinevide) {
                 System.out.println("Il y a encore des mines avec des minerais.");
                 m.affichage();}
-            }
         }
     }
 }
+
