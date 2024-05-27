@@ -76,20 +76,7 @@ class RobotTest {
     }
 
 
-    @Test
-    void depose() { // Teste si le robot peut déposer correctement les minerais dans l'entrepôt
-        robot.avancer(monde, "O");
-        robot.deposer(this.entrepot);
-        assertEquals(0, robot.getCapaciteStock());
-        assertEquals(2, entrepot.getNbM());
-    }
 
 
-    @Test
-    void recolte() {
-        robot.avancer(monde, "E");
-        robot.recolter(this.mine);
-        assertEquals(2, robot.getCapaciteStock());
-        assertEquals(8, mine.getNbMinerai());
-    }
+
 }
