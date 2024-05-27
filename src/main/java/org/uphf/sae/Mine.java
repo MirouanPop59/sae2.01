@@ -8,17 +8,17 @@ public class Mine extends Secteur {
     private String typeM;
     protected int nbMinerai;
     private int CapaInitial;
+    private ArrayList<Mine> listMine = new ArrayList<Mine>();
 
     /* constructeur par defaut pour la mine */
 
-    public Mine(int idMine, int ligne, int colonne, String typeM) {
+    public Mine(int idMine, int colonne,int ligne,  String typeM) {
         this.idMine = idMine;
-        this.ligne = ligne;
         this.colonne = colonne;
+        this.ligne = ligne;
         this.typeM = typeM;
         this.CapaInitial = genererInt(50,100);   /* la capacité de la mine est calculé avec un random entre 50 et 100 pour sa capacité */
         this.nbMinerai = this.CapaInitial ;
-
     }
 
     public int genererInt(int borneInf,int borneSup){
@@ -30,10 +30,13 @@ public class Mine extends Secteur {
 
     /* creation de getter de chaque attributs */
 
-    public String TypeMineraiM() {
+    public String getTypeMineraiM() {
         return typeM;
     }
 
+    public void retirerMinerai() {
+        this.nbMinerai -=1;
+    }
     public int getIdMine() {
         return idMine;
     }
@@ -52,6 +55,11 @@ public class Mine extends Secteur {
 
     public int getNbMinerai() {
         return this.nbMinerai;
+    }
+
+    @Override
+    public String toString() {
+        return "M" + getIdMine()+ " | "+ getColonne()+ getLigne() + " | " +getTypeMineraiM()+" | "+getNbMinerai()+ '/'+ getCapaInitial() ;
     }
 }
 

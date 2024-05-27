@@ -3,18 +3,19 @@ package org.uphf.sae;
 
 public class Entrepot extends Secteur {
     private int idEntrepot;
-    private int ligne;
     private int colonne;
+    private int ligne;
     private String typeM;
     protected int nbM;
 
+
     /* constructeur entrepot par defauts */
-    public Entrepot(int idEntrepot,int ligne, int colonne,String typeM) {
+    public Entrepot(int idEntrepot, int colonne,int ligne,String typeM) {
         this.idEntrepot = idEntrepot;
-        this.ligne=ligne;
         this.colonne = colonne;
+        this.ligne=ligne;
         this.typeM=typeM;
-        this.nbM=0 ; /* on initialise le nombre de minerai du robot puisqu'au début de la partie il possède 0 minerai */
+        this.nbM=0 ; /* on initialise le nombre de minerai de l'entrepot à 0 puisqu'au début de la partie il possède 0 minerai */
 
     }
 
@@ -47,6 +48,6 @@ public class Entrepot extends Secteur {
     }
 
     public String toString(){
-        return "E"+getIdEntrepot()+" | "+typeM+" | "+getNbM();
+        return "E"+getIdEntrepot()+" | "+getColonne()+" | "+getLigne()+" | "+ TypeMineraiE() +" | "+getNbM();
     }
 }
