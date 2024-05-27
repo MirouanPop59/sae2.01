@@ -61,6 +61,7 @@ public class Main {
                                 if (mineRbt.getColonne() == rEnJeux.getColonne() && mineRbt.getLigne()==rEnJeux.getLigne() ){
                                     System.out.println(mine.getIdMine());
                                     rEnJeux.recolter(mineRbt);
+                                    m.affichage();
                                     System.out.println("Entrez l'ID du robot que vous souhaitez sélectionner. Liste des robots disponibles :");
                                     for (Robot robot : m.getLstRobot()) {
                                         System.out.println(robot);}
@@ -70,6 +71,7 @@ public class Main {
                             for(Entrepot entrepotRbt: m.getLstEntrepot())
                                 if (entrepotRbt.getColonne() == rEnJeux.getColonne() && entrepotRbt.getLigne()==rEnJeux.getLigne()){
                                     rEnJeux.deposer(entrepotRbt);
+                                    m.affichage();
                                     cptTour+=1;
                                 }
 

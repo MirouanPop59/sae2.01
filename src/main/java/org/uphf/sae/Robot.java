@@ -54,21 +54,13 @@ public class Robot {
         return monde;
     }
 
-    public int genererInt(int borneInf, int borneSup){
-        Random random = new Random();
-        int nb;
-        nb = borneInf + random.nextInt(borneSup - borneInf);
-        return nb;
-    }
-    /* Methode permettant que le robot recolte un nombre de minerai aleatoire entre 1 et 3 */
-
     public void recolter(Mine min) {
         int capatampon= this.capaciteRecolte;
         System.out.println(capatampon);
         System.out.println(this.capaciteRecolte);
         if (Objects.equals(min.getTypeMineraiM(), this.typeM)){
-            while (capatampon>0){
-                if ((min.getNbMinerai()>0) || (this.capaciteStock>this.nbM)){
+            while ((capatampon>0) && this.capaciteStock>this.nbM){
+                if ((min.getNbMinerai()>0)){
                     this.nbM += 1;
                     min.retirerMinerai();
                     }
