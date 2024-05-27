@@ -48,6 +48,6 @@ public class Entrepot extends Secteur {
     }
 
     public String toString(){
-        return "E"+getIdEntrepot()+" | "+getColonne()+" | "+getLigne()+" | "+ TypeMineraiE() +" | "+getNbM();
+        return "E"+getIdEntrepot()+" | "+getColonne()+","+getLigne()+" | "+ TypeMineraiE() +" | "+getNbM();
     }
 }
