@@ -80,7 +80,6 @@ public class Main {
                             m = rEnJeux.avancer(m,command);
                             cptTour+=1;
                             m.affichage();}
-                            mine.nbMinerai = 0; // ou une autre logique pour réduire nbMinerai
                             // break;
                     }
                 }

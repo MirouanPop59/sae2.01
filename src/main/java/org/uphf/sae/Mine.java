@@ -59,7 +59,7 @@ public class Mine extends Secteur {
 
     @Override
     public String toString() {
-        return "M" + getIdMine()+ " | "+ getColonne()+ getLigne() + " | " +getTypeMineraiM()+" | "+getNbMinerai()+ '/'+ getCapaInitial() ;
+        return "M" + getIdMine()+ " | "+ getColonne()+","+ getLigne() + " | " +getTypeMineraiM()+" | "+getNbMinerai()+ '/'+ getCapaInitial() ;
     }
 }
 

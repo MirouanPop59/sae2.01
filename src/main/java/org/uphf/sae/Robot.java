@@ -26,7 +26,7 @@ public class Robot {
     /* création de la Methode Avancer pour que l'utilisateur puisse choisir la direction du robot à chaque tour*/
 
     public Monde avancer(Monde monde,String direction) {
-        System.out.println("Direction selectionnée"+direction);
+        System.out.println("Direction selectionnée : "+direction);
         try {
             if (direction.equals("N") && monde.leMonde[this.colonne-1][this.ligne].accueilRobot() && colonne-1>=0){
                 monde.leMonde[this.colonne][this.ligne].enleverRobot();
@@ -63,21 +63,21 @@ public class Robot {
     /* Methode permettant que le robot recolte un nombre de minerai aleatoire entre 1 et 3 */
 
     public void recolter(Mine min) {
-        int capatampon=this.capaciteRecolte;
+        int capatampon= this.capaciteRecolte;
         System.out.println(capatampon);
         System.out.println(this.capaciteRecolte);
         if (Objects.equals(min.getTypeMineraiM(), this.typeM)){
-            while ((min.getNbMinerai()>0) || (this.capaciteStock>this.nbM) || capatampon>0){
-                if (capatampon == 0){ System.out.println("La capacité de récolte du robot est atteinte "); break;}
-                else if (this.capaciteStock==this.nbM){ System.out.println("La capacité de stockage du robot est atteinte "); break;}
-                else if (min.getNbMinerai() == 0){System.out.println("Mine vide ");break;}
-                else{
-                this.nbM += 1;
-                capatampon-=1;
-                min.retirerMinerai();
-                break;}
+            while (capatampon>0){
+                if ((min.getNbMinerai()>0) || (this.capaciteStock>this.nbM)){
+                    this.nbM += 1;
+                    min.retirerMinerai();
+                    }
+                    capatampon-=1;}
+            if (capatampon == 0){ System.out.println("La capacité de récolte du robot est atteinte "); }
+            else if (this.capaciteStock==this.nbM){ System.out.println("La capacité de stockage du robot est atteinte "); }
+            else if (min.getNbMinerai() == 0){System.out.println("Mine vide ");}
             }
-        }else{System.out.println("Le robot n'est pas adapter a ce type de minerai.");}
+        else{System.out.println("Le robot n'est pas adapter a ce type de minerai.");}
         }
 
 
@@ -122,6 +122,6 @@ public class Robot {
     }
 
     public String toString() {
-        return "R" + getIdRobot()+ " | "+ getColonne()+ getLigne() + " | " +getTypeM()+" | "+ getNbM()+ '/'+ getCapaciteStock() ;
+        return "R" + getIdRobot()+ " | "+ getColonne()+","+ getLigne() + " | " +getTypeM()+" | "+ getNbM()+ '/'+ getCapaciteStock() ;
     }
 }
