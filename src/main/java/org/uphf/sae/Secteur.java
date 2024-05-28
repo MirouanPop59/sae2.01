@@ -49,6 +49,25 @@ public class Secteur {
         this.sect[1][1] = 0;
     }
 
+    public int getidBatiement(){
+        return this.sect[0][1];
+    }
+    public int getidRobot(){
+        return this.sect[1][1];
+    }
+    public boolean secteurMine(){
+        if(this.sect[0][0] == 7) {return true;}else {return false;}}
+
+    public boolean secteurEntrepot(){
+        if(this.sect[0][0] == 8) {return true;}else {return false;}}
+
+
+    public boolean secteurEau(){
+        if(this.sect[0][0] == 9 && this.sect[0][1] == 9 && this.sect[1][0] == 9 && this.sect[1][1] == 9) {
+            return true;
+        }else {return false;}
+    }
+
     public void afficherligne(int ligne) {
         // le type de l'element occupant le haut du secteur
         int type = this.sect[ligne][0];

@@ -27,7 +27,7 @@ public class Entrepot extends Secteur {
 
     /* création des getter */
 
-    public String TypeMineraiE() {
+    public String getTypeMineraiE() {
         return typeM;
     }
 
@@ -48,6 +48,6 @@ public class Entrepot extends Secteur {
     }
 
     public String toString(){
-        return "E"+getIdEntrepot()+" | "+getColonne()+","+getLigne()+" | "+ TypeMineraiE() +" | "+getNbM();
+        return "E"+getIdEntrepot()+" | "+getColonne()+","+getLigne()+" | "+ getTypeMineraiE() +" | "+getNbM();
     }
 }

@@ -4,6 +4,7 @@ module org.uphf.sae {
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
+    requires java.desktop;
 
     opens org.uphf.sae to javafx.fxml;
     exports org.uphf.sae;

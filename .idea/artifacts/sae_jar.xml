@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="sae:jar">
+  <artifact type="jar" name="sae:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/sae_jar</output-path>
     <root id="archive" name="sae.jar">
       <element id="module-output" name="sae" />
