@@ -2,16 +2,16 @@ package org.uphf.sae;
 
 import java.util.Stack;
 
-public class PEP {
+public class Pep {
 
     // NOTE :Traduction d'un algo par le chat, ne pas utiliser comme tel !!!
-
+//test
     // Méthode pour effectuer le parcours en profondeur itératif à partir d'un sommet donné
-    static void PEP(int[][] G, int s) {
+    static void Pep (int[][] G, int s) {
         int numSommets = G.length;
 
         // Marquer tous les sommets comme non visités (par défaut)
-        boolean[] marqués = new boolean[numSommets];
+        boolean[] marques = new boolean[numSommets];
 
         // Pile pour le parcours DFS
         Stack<Integer> pile = new Stack<>();
@@ -23,37 +23,18 @@ public class PEP {
             // Dépiler un sommet de la pile
             s = pile.pop();
 
-            if (!marqués[s]) {
+            if (!marques[s]) {
                 // Marquer et afficher le sommet
-                marqués[s] = true;
+                marques[s] = true;
                 System.out.print(s + " ");
 
                 // Empiler tous les voisins non marqués du sommet dépilé
                 for (int t = numSommets - 1; t >= 0; t--) {
-                    if (G[s][t] == 1 && !marqués[t]) {
+                    if (G[s][t] == 1 && !marques[t]) {
                         pile.push(t);
                     }
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        // Représentation du graphe par une matrice d'adjacence 10x10
-        int[][] G = {
-            {0, 1, 0, 0, 0, 0, 1, 0, 0, 0},
-            {1, 0, 1, 0, 0, 0, 0, 0, 1, 0},
-            {0, 1, 0, 1, 0, 0, 0, 0, 0, 1},
-            {0, 0, 1, 0, 1, 0, 0, 0, 0, 0},
-            {0, 0, 0, 1, 0, 1, 0, 1, 0, 0},
-            {0, 0, 0, 0, 1, 0, 1, 0, 1, 0},
-            {1, 0, 0, 0, 0, 1, 0, 1, 0, 1},
-            {0, 0, 0, 0, 1, 0, 1, 0, 0, 1},
-            {0, 1, 0, 0, 0, 1, 0, 0, 0, 1},
-            {0, 0, 1, 0, 0, 0, 1, 1, 1, 0}
-        };
-
-        System.out.println("Parcours en profondeur à partir du sommet 2:");
-        PEP(G, 2);
     }
 }
