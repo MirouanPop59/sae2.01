@@ -3,17 +3,17 @@ package org.uphf.sae;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Monde {
+public class Monde{
     public Secteur[][] leMonde = new Secteur[10][10];
     private int tampon;
     private int cx;
     private int cy;
-    ArrayList<Integer> l = new ArrayList<Integer>();
-    ArrayList<ArrayList<Integer>> lstPtEau = new ArrayList<ArrayList<Integer>>();
-    ArrayList<ArrayList<Integer>> lstcoo = new ArrayList<ArrayList<Integer>>();
-    ArrayList<Entrepot> lstEntrepot  = new ArrayList<Entrepot>();
-    ArrayList<Mine> lstMine = new ArrayList<Mine>();
-    ArrayList<Robot> lstRobot = new ArrayList<Robot>();
+    ArrayList<Integer> l = new ArrayList<>();
+    ArrayList<ArrayList<Integer>> lstPtEau = new ArrayList<>();
+    ArrayList<ArrayList<Integer>> lstcoo = new ArrayList<>();
+    ArrayList<Entrepot> lstEntrepot  = new ArrayList<>();
+    ArrayList<Mine> lstMine = new ArrayList<>();
+    ArrayList<Robot> lstRobot = new ArrayList<>();
 
     public int genererInt(int borneInf, int borneSup) {
         Random random = new Random();
@@ -29,13 +29,13 @@ public class Monde {
             cy = genererInt(0,leMonde.length);
             l.add(cx);
             l.add(cy);
-            while (!leMonde[cx][cy].vierge()){
+            do {
                     l.clear();
                     cx = genererInt(0,leMonde[0].length );
                     cy = genererInt(0,leMonde.length);
                     l.add(cx);
                     l.add(cy);
-                }
+                }while (!leMonde[cx][cy].vierge());
             this.leMonde[cx][cy].CreePtEau();
             this.lstPtEau.add(new ArrayList<>(l));
         }
@@ -61,13 +61,13 @@ public class Monde {
             this.cy = genererInt(0,leMonde.length);
             l.add(cx);
             l.add(cy);
-            while (!leMonde[cx][cy].accueilBatiment()) {
+            do  {
                 l.clear();
                 this.cx = genererInt(0,leMonde[0].length );
                 this.cy = genererInt(0,leMonde.length);
                 l.add(cx);
                 l.add(cy);
-            }
+            }while (!leMonde[cx][cy].accueilBatiment());
             this.leMonde[cx][cy].CreeMine(nbr);
             if (nbr%2!=0){
                 this.lstMine.add(new Mine(nbr, cx, cy, "NI"));
@@ -85,13 +85,13 @@ public class Monde {
             this.cy = genererInt(0,leMonde.length);
             l.add(cx);
             l.add(cy);
-            while (!leMonde[cx][cy].accueilBatiment()) {
+            do  {
                 l.clear();
                 this.cx = genererInt(0,leMonde[0].length );
                 this.cy = genererInt(0,leMonde.length);
                 l.add(cx);
                 l.add(cy);
-            }
+            }while (!leMonde[cx][cy].accueilBatiment());
             this.leMonde[cx][cy].CreeEntrepot(nbr);
             if (nbr==1){
                 this.lstEntrepot.add(new Entrepot(nbr, cx, cy, "NI"));}
@@ -109,13 +109,13 @@ public class Monde {
             this.cy = genererInt(0,leMonde.length);
             l.add(cx);
             l.add(cy);
-            while (!leMonde[cx][cy].accueilRobot()) {
+            do  {
                 l.clear();
-                this.cx = genererInt(0,leMonde[0].length );
-                this.cy = genererInt(0,leMonde.length);
+                this.cx = genererInt(0, leMonde[0].length);
+                this.cy = genererInt(0, leMonde.length);
                 l.add(cx);
                 l.add(cy);
-            }
+            }while (!leMonde[cx][cy].accueilRobot());
             int capaExtraction = genererInt(1,3);
             int capaStock = genererInt(5,9);
             if (nbr%2!=0){
@@ -129,7 +129,6 @@ public class Monde {
     }
 
     public Monde() {
-        this.leMonde = leMonde;
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 this.leMonde[i][j] = new Secteur();
