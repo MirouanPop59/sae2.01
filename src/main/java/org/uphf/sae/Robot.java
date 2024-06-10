@@ -4,13 +4,13 @@ import java.util.*;
 
 
 public class Robot {
-    private int idRobot;
+    final int idRobot;
     private int colonne;
     private int ligne;
-    private String typeM;
+    final String typeM;
     private int nbM;
-    private int capaciteRecolte;
-    private int capaciteStock;
+    final int capaciteRecolte;
+    final int capaciteStock;
 
     /* Constructeur par défaut*/
 
@@ -19,7 +19,7 @@ public class Robot {
         this.colonne = colonne;
         this.ligne = ligne;
         this.typeM = typeM;
-        this.nbM = 0;
+        this.nbM = 0 ;
         this.capaciteRecolte = capaciteRecolte;
         this.capaciteStock = capaciteStock;
     }
@@ -77,7 +77,7 @@ public class Robot {
     /* Cette methode permet à un robot de deposer ses minerais dans l'entrepot correspondant */
 
     public void deposer(Entrepot e) {
-        if (e.getTypeMineraiE().equals(this.typeM) && e.getColonne()==this.colonne && e.getLigne() == this.ligne) {
+        if (e.TypeMineraiE().equals(this.typeM) && e.getColonne()==this.colonne && e.getLigne() == this.ligne) {
             e.nbM+=this.nbM;
             this.nbM=0;
         }else{System.out.println("L'entrepot n'est pas adapter a ce type de minerai.");}
@@ -85,7 +85,9 @@ public class Robot {
 
     /* creation des getter et l'affichage toString */
 
-
+    public String TypeMineraiR() {
+        return TypeMineraiR();
+    }
 
     public int getIdRobot() {
         return idRobot;
@@ -113,13 +115,5 @@ public class Robot {
 
     public String toString() {
         return "R" + getIdRobot()+ " | "+ getColonne()+","+ getLigne() + " | " +getTypeM()+" | "+ getNbM()+ '/'+ getCapaciteStock() ;
-    }
-
-    public void setColonne(int colonne) {
-        this.colonne = colonne;
-    }
-
-    public void setLigne(int ligne) {
-        this.ligne = ligne;
     }
 }
