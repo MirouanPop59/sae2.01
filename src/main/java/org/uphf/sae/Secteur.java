@@ -1,10 +1,12 @@
 package org.uphf.sae;
 
 
-public class Secteur {
-    private int[][] sect = {{0,0},{0,0}};
+public class Secteur{
+    final int[][] sect = {{0,0},{0,0}};
+    private boolean decouvert;
 
     public void CreePtEau() {
+        decouvert = false;
         this.sect[0][0] = 9;
         this.sect[0][1] = 9;
         this.sect[1][0] = 9;
@@ -12,6 +14,7 @@ public class Secteur {
     }
 
     public void CreeEntrepot(int nb) {
+        decouvert = false;
         this.sect[0][0] = 8;
         this.sect[0][1] = nb;
         this.sect[1][0] = 0;
@@ -19,6 +22,7 @@ public class Secteur {
     }
 
     public void CreeMine(int nb) {
+        decouvert = false;
         this.sect[0][0] = 7;
         this.sect[0][1] = nb;
         this.sect[1][0] = 0;
@@ -26,6 +30,7 @@ public class Secteur {
     }
 
     public void infini() {
+        decouvert = false;
         double posInf = Double.POSITIVE_INFINITY;
         this.sect[0][0] = (int)posInf;
         this.sect[0][1] = (int)posInf;
@@ -38,8 +43,7 @@ public class Secteur {
         this.sect[1][1] = nb;
     }
     public boolean vierge(){
-        if (this.sect[0][0] == 0 && this.sect[0][1] == 0 && this.sect[1][0] == 0 && this.sect[1][1] == 0) {
-            return true;}
+        if (this.sect[0][0] == 0 && this.sect[0][1] == 0 && this.sect[1][0] == 0 && this.sect[1][1] == 0) return true;
         else {return false;}
     }
     public boolean accueilBatiment() {
@@ -48,14 +52,18 @@ public class Secteur {
         else {return false;}
     }
     public boolean accueilRobot() {
-        if (this.sect[1][0] == 0 && this.sect[1][1] == 0) {
-            return true;}
+        if (this.sect[1][0] == 0 && this.sect[1][1] == 0) return true;
         else {return false;}
     }
     public void enleverRobot() {
         this.sect[1][0] = 0;
         this.sect[1][1] = 0;
     }
+
+    public boolean verifEau() {
+        return this.sect[1][0] == 9;
+        }
+
 
     public void afficherligne(int ligne) {
         // le type de l'element occupant le haut du secteur
