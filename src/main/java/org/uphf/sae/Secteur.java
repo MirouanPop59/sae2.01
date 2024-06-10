@@ -25,6 +25,14 @@ public class Secteur {
         this.sect[1][1] = 0;
     }
 
+    public void infini() {
+        double posInf = Double.POSITIVE_INFINITY;
+        this.sect[0][0] = (int)posInf;
+        this.sect[0][1] = (int)posInf;
+        this.sect[0][0] = (int)posInf;
+        this.sect[0][1] = (int)posInf;
+    }
+
     public void robot(int nb) {
         this.sect[1][0] = 6;
         this.sect[1][1] = nb;
@@ -47,25 +55,6 @@ public class Secteur {
     public void enleverRobot() {
         this.sect[1][0] = 0;
         this.sect[1][1] = 0;
-    }
-
-    public int getidBatiement(){
-        return this.sect[0][1];
-    }
-    public int getidRobot(){
-        return this.sect[1][1];
-    }
-    public boolean secteurMine(){
-        if(this.sect[0][0] == 7) {return true;}else {return false;}}
-
-    public boolean secteurEntrepot(){
-        if(this.sect[0][0] == 8) {return true;}else {return false;}}
-
-
-    public boolean secteurEau(){
-        if(this.sect[0][0] == 9 && this.sect[0][1] == 9 && this.sect[1][0] == 9 && this.sect[1][1] == 9) {
-            return true;
-        }else {return false;}
     }
 
     public void afficherligne(int ligne) {

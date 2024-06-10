@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Monde {
-    protected Secteur[][] leMonde = new Secteur[10][10];
+    public Secteur[][] leMonde = new Secteur[10][10];
     private int tampon;
     private int cx;
     private int cy;
