@@ -2,17 +2,16 @@ package org.uphf.sae;
 import java.util.*;
 
 public class Mine extends Secteur {
-    private int idMine;
-    private int ligne;
-    private int colonne;
-    private String typeM;
+    final int idMine;
+    final int ligne;
+    final int colonne;
+    final String typeM;
     protected int nbMinerai;
-    private int CapaInitial;
-    private ArrayList<Mine> listMine = new ArrayList<Mine>();
+    final int CapaInitial;
 
     /* constructeur par defaut pour la mine */
 
-    public Mine(int idMine, int colonne,int ligne,  String typeM) {
+    public Mine (int idMine, int colonne,int ligne,  String typeM) {
         this.idMine = idMine;
         this.colonne = colonne;
         this.ligne = ligne;
