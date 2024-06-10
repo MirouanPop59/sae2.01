@@ -1,16 +1,14 @@
 package org.uphf.sae;
 
+import java.util.Arrays;
+
 public class Dijkstra {
-    int[][] transi = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+    int[][] transi = new int[100][100];
+    public void remplir(){
+        for (int[] ints : transi) {
+            Arrays.fill(ints, 0);
+        }
+    }    
 
     public double[] dijkstra(int depart) {
         int longueur = transi.length;
