@@ -2,10 +2,10 @@ package org.uphf.sae;
 
 
 public class Entrepot extends Secteur {
-    private int idEntrepot;
-    private int colonne;
-    private int ligne;
-    private String typeM;
+    final int idEntrepot;
+    final int colonne;
+    final int ligne;
+    final String typeM;
     protected int nbM;
 
 
@@ -27,7 +27,7 @@ public class Entrepot extends Secteur {
 
     /* création des getter */
 
-    public String getTypeMineraiE() {
+    public String TypeMineraiE () {
         return typeM;
     }
 
@@ -48,6 +48,6 @@ public class Entrepot extends Secteur {
     }
 
     public String toString(){
-        return "E"+getIdEntrepot()+" | "+getColonne()+","+getLigne()+" | "+ getTypeMineraiE() +" | "+getNbM();
+        return "E"+getIdEntrepot()+" | "+getColonne()+","+getLigne()+" | "+ TypeMineraiE() +" | "+getNbM();
     }
 }
