@@ -1,0 +1,113 @@
+package org.uphf.sae;
+
+import java.util.*;
+
+public class Robot {
+    final int idRobot;
+    private int colonne;
+    private int ligne;
+    final String typeM;
+    private int nbM;
+    final int capaciteRecolte;
+    final int capaciteStock;
+
+    /* Constructeur par défaut*/
+
+    public Robot(int idRobot, int colonne, int ligne, String typeM, int capaciteRecolte, int capaciteStock) {
+        this.idRobot = idRobot;
+        this.colonne = colonne;
+        this.ligne = ligne;
+        this.typeM = typeM;
+        this.nbM = 0 ;
+        this.capaciteRecolte = capaciteRecolte;
+        this.capaciteStock = capaciteStock;
+    }
+    /* création de la Methode Avancer pour que l'utilisateur puisse choisir la direction du robot à chaque tour*/
+    public Monde avancer(Monde monde,String direction) {
+        try {
+            if (direction.equals("N") && monde.leMonde[this.colonne-1][this.ligne].accueilRobot() && colonne-1>=0){
+                monde.leMonde[this.colonne][this.ligne].enleverRobot();
+                monde.leMonde[this.colonne-1][this.ligne].robot(this.getIdRobot());
+                this.colonne-=1;}
+            else if(direction.equals("S") && monde.leMonde[this.colonne+1][this.ligne].accueilRobot()&& colonne+1<= monde.leMonde[0].length){
+                monde.leMonde[this.colonne][this.ligne].enleverRobot();
+                monde.leMonde[this.colonne+1][this.ligne].robot(this.getIdRobot());
+                this.colonne+=1;}
+            else if(direction.equals("O") && monde.leMonde[this.colonne][this.ligne-1].accueilRobot()&& ligne-1>=0){
+                monde.leMonde[this.colonne][this.ligne].enleverRobot();
+                monde.leMonde[this.colonne][this.ligne-1].robot(this.getIdRobot());
+                this.ligne-=1;}
+            else if(direction.equals("E") && monde.leMonde[this.colonne][this.ligne+1].accueilRobot() && ligne+1<= monde.leMonde.length){
+                monde.leMonde[this.colonne][this.ligne].enleverRobot();
+                monde.leMonde[this.colonne][this.ligne+1].robot(this.getIdRobot());
+                this.ligne+=1;}
+            else if (direction.equals("H")){return monde;}
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return monde;
+    }
+
+
+
+    public int recolter(Mine min) {
+        int capatampon= this.capaciteRecolte;
+        if (Objects.equals(min.getTypeMineraiM(), this.typeM)){
+            while ((capatampon>0) && this.capaciteStock>this.nbM){
+                if ((min.getNbMinerai()>0)){
+                    this.nbM += 1;
+                    min.retirerMinerai();
+                    }
+                    capatampon-=1;}
+            if (capatampon == 0){return 0;}
+            else if (this.capaciteStock==this.nbM){return 1;}
+            else if (min.getNbMinerai() == 0){return 1;}
+            return 2;}
+        else{return 1;}
+        }
+
+
+
+    /* Cette methode permet à un robot de deposer ses minerais dans l'entrepot correspondant */
+
+    public void deposer(Entrepot e) {
+        if (e.TypeMineraiE().equals(this.typeM) && e.getColonne()==this.colonne && e.getLigne() == this.ligne) {
+            e.nbM+=this.nbM;
+            this.nbM=0;
+        }else{System.out.println("L'entrepot n'est pas adapter a ce type de minerai.");}
+    }
+
+    /* creation des getter et l'affichage toString */
+
+    public String TypeMineraiR() {
+        return TypeMineraiR();
+    }
+
+    public int getIdRobot() {
+        return idRobot;
+    }
+
+    public int getColonne() {
+        return colonne;
+    }
+
+    public int getLigne() {
+        return ligne;
+    }
+
+    public String getTypeM() {
+        return typeM;
+    }
+
+    public int getNbM() {
+        return nbM;
+    }
+
+    public int getCapaciteStock() {
+        return capaciteStock;
+    }
+
+    public String toString() {
+        return "R" + getIdRobot()+ " | "+ getColonne()+","+ getLigne() + " | " +getTypeM()+" | "+ getNbM()+ '/'+ getCapaciteStock() ;
+    }
+}
